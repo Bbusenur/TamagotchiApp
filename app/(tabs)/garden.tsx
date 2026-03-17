@@ -128,12 +128,10 @@ function RoamingPet({ pet }: { pet: any }) {
 
 
 export default function GardenScreen() {
-    const { pets, stats } = usePets();
+    const { pets } = usePets();
 
     const turSirasi = ["Kedi", "Köpek", "Balık", "Kaplumbağa", "Kuş", "Tavşan"] as const;
     const [aktifTur, setAktifTur] = React.useState<(typeof turSirasi)[number]>("Kedi");
-
-    const currentBg = stats?.currentBackground || "Manzara";
 
     const arkaPlanHaritasi: Record<string, string> = {
         Kedi: "#acd3a5ff",
@@ -145,6 +143,7 @@ export default function GardenScreen() {
     };
 
     const aktifBg = arkaPlanHaritasi[aktifTur] ?? "#DCFCE7";
+
     const turPets = pets.filter((p: any) => p.tur === aktifTur);
 
     return (
@@ -345,5 +344,5 @@ const styles = StyleSheet.create({
     simpleCloud: {
         position: "absolute",
         zIndex: 0,
-    }
+    },
 });

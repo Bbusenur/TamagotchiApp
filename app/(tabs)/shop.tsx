@@ -3,25 +3,23 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export const SHOP_ITEMS: any[] = [
-    { id: "Oda", ad: "Şık Oda", tip: "arkaplan", fiyat: 0, icon: "🏠" },
-    { id: "Bahce", ad: "Renkli Bahçe", tip: "arkaplan", fiyat: 100, icon: "🌳" },
+    { id: "AKS_SAPKA_SIYAH", ad: "Siyah Şapka", tip: "aksesuar", fiyat: 60, icon: "🎩" },
+    { id: "AKS_SAPKA_KIRMIZI", ad: "Kırmızı Şapka", tip: "aksesuar", fiyat: 65, icon: "🎩" },
+    { id: "AKS_SAPKA_MAVI", ad: "Mavi Şapka", tip: "aksesuar", fiyat: 65, icon: "🎩" },
+    { id: "AKS_SAPKA_YESIL", ad: "Yeşil Şapka", tip: "aksesuar", fiyat: 65, icon: "🎩" },
+    { id: "AKS_SAPKA_SARI", ad: "Sarı Şapka", tip: "aksesuar", fiyat: 70, icon: "🎩" },
 ];
 
 export default function ShopScreen() {
-    const { stats, buyItem, setBackground } = usePets();
+    const { stats, buyItem } = usePets();
 
     const handleBuy = (item: any) => {
         if ((stats.inventory || []).includes(item.id)) {
-            if (item.tip === 'arkaplan') {
-                setBackground(item.id);
-            }
             return;
         }
         const basarili = buyItem(item.id, item.fiyat);
         if (basarili) {
-            if (item.tip === 'arkaplan') {
-                setBackground(item.id);
-            }
+            alert(`Satın alındı: ${item.ad}`);
         } else {
             alert("Yeterli Coin yok! Evcil hayvanınla ilgilenerek coin kazanabilirsin.");
         }
@@ -44,17 +42,15 @@ export default function ShopScreen() {
                         <View key={item.id} style={styles.card}>
                             <Text style={styles.icon}>{item.icon}</Text>
                             <View style={styles.info}>
-                                <Text style={styles.ad}>{item.ad} <Text style={styles.tipText}>({item.tip === 'arkaplan' ? 'Arka Plan' : 'Aksesuar'})</Text></Text>
+                                <Text style={styles.ad}>{item.ad} <Text style={styles.tipText}>(Aksesuar)</Text></Text>
                                 <Text style={styles.fiyat}>{item.fiyat > 0 ? `${item.fiyat} Coin` : "Ücretsiz"}</Text>
                             </View>
                             <TouchableOpacity
-                                style={[styles.buyBtn, alindiMi && styles.boughtBtn, { 
-                                    backgroundColor: alindiMi ? (stats.currentBackground === item.id ? "#9CA3AF" : "#3B82F6") : "#10B981" 
-                                }]}
+                                style={[styles.buyBtn, alindiMi && styles.boughtBtn, { backgroundColor: alindiMi ? "#9CA3AF" : "#10B981" }]}
                                 onPress={() => handleBuy(item)}
                             >
                                 <Text style={styles.buyBtnText}>
-                                    {alindiMi ? (stats.currentBackground === item.id ? "Seçili" : "Kullan") : "Satın Al"}
+                                    {alindiMi ? "Alındı" : "Satın Al"}
                                 </Text>
                             </TouchableOpacity>
                         </View>

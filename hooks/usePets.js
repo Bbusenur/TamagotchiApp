@@ -44,8 +44,7 @@ const defaultStats = {
         adoptedToday: 0,
     },
     coins: 100, // Başlangıç parası
-    inventory: ["Oda", "Manzara"], // Satın alınan eşyalar
-    currentBackground: "Manzara", // Seçili arka plan
+    inventory: [], // Satın alınan eşyalar (aksesuarlar)
 };
 
 function calculateLevel(xp) {
@@ -240,7 +239,7 @@ export function PetProvider({ children }) {
     const buyItem = (item, price) => {
         let success = false;
         setStats(prev => {
-            const inventory = prev.inventory || ["Oda", "Manzara"];
+            const inventory = prev.inventory || [];
             if (inventory.includes(item)) return prev; // Zaten var
             if ((prev.coins || 0) >= price) {
                 success = true;
@@ -255,14 +254,6 @@ export function PetProvider({ children }) {
             return prev;
         });
         return success;
-    };
-
-    const setBackground = (bgName) => {
-        setStats(prev => {
-            const nextStats = { ...prev, currentBackground: bgName };
-            persistStats(nextStats);
-            return nextStats;
-        });
     };
 
     const earnPetXp = (id, amount) => {
@@ -319,7 +310,6 @@ export function PetProvider({ children }) {
                 addCoins,
                 spendCoins,
                 buyItem,
-                setBackground,
                 earnPetXp,
                 clearPets,
                 reload: loadAll,

@@ -14,12 +14,14 @@ import PikselKopek from "./PikselKopek";
 import PikselKus from "./PikselKus";
 import PikselTavsan from "./PikselTavsan";
 import { usePets } from "../hooks/usePets";
+import { AccessoryLayer } from "./pixel-accessories";
 
 export default function DigitalPet({
   id,
   isim = "İsimsiz",
   tur = "Kedi",
   renk = "Turuncu",
+  aksesuarlar = [],
   aclik: initialAclik = 0,
   mutluluk: initialMutluluk = 0,
   enerji: initialEnerji = 0,
@@ -400,6 +402,9 @@ export default function DigitalPet({
         <Animated.View style={[styles.karakterKapsayici, previewOnly && styles.previewKarakterKapsayici, { transform: [{ translateY: bounceAnim }, { translateX: sallanAnim }, { translateX: yuruAnim }, { scale: aksiyon || yuruyorMu || tur === "Balık" ? 1 : solukAnim }] }]}>
           <View style={[styles.pikselBuyutucu, { transform: [{ scale: stage === "Bebek" ? 2.0 : stage === "Genç" ? 2.5 : stage === "Yetişkin" ? 3.0 : 3.2 }] }]}>
             {renderKarakter(getDurum())}
+            {!!aksesuarlar?.length && !previewOnly && (
+              <AccessoryLayer tur={tur} aksesuarlar={aksesuarlar} />
+            )}
             {xpFeedback && (
               <Animated.View style={[styles.xpFeedback, { opacity: fadeAnim }]}>
                 <Text style={styles.xpFeedbackText}>+ {xpFeedback} XP</Text>
