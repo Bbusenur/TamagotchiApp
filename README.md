@@ -1,50 +1,23 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## MyPet — Dijital Evcil Hayvan ve Mini Oyunlar### Projenin AmacıMyPet, kullanıcıların farklı türlerde dijital evcil hayvanlar sahiplenip onlarla etkileşime geçerek ilerleme kaydettiği, aynı zamanda mini oyunlarla ödül kazanabildiği bir mobil uygulamadır. Amaç; **bakım + etkileşim + ödül** döngüsüyle kullanıcıya sürdürülebilir bir oyunlaştırılmış deneyim sunmaktır.### Oyunlaştırma Özellikleri- **Sahiplenme sistemi**: Farklı türlerde (Kedi, Köpek, Balık, Kaplumbağa, Kuş, Tavşan) dostlar sahiplenilebilir.- **Stat sistemi**: Açlık, mutluluk, enerji ve temizlik değerleri zamanla değişir; kullanıcı aksiyonlarıyla yönetilir.- **XP & Seviye**:  - Kullanıcı profili XP kazanarak seviye atlar.  - Evcil hayvanlar da kendi XP’leriyle seviye/stage (Bebek/Genç/Yetişkin/Yaşlı) ilerlemesi yaşar.- **Coin sistemi**: Etkileşimler ve mini oyunlar Coin kazandırır.- **Market (Shop)**: Coin ile satın alınabilen **aksesuarlar (şapkalar)** bulunur ve evcil hayvanlara takılabilir.- **Mini oyunlar** (her biri ayrı ekranda):  - **Blok Kırma (Brick Breaker)**: Platformu hareket ettirip top ile blokları kırarak ödül kazanma.  - **Zıpla Yüksel (Jump Up)**: Zıplayarak platformlardan yükselme; yatay hareket cihazın sağ/sol hareketine bağlıdır.  - **Balon Patlatma (Balloons)**: Ekranda beliren balonları patlatma; 3 balon kaçırınca oyun biter.---## Nasıl Çalıştırılır? (Installation & Run)### Gereksinimler- Node.js (LTS önerilir)- npm (Node ile gelir)- Expo Go (telefon testleri için) / Android Studio Emulator (opsiyonel)### Kurulum1) Repoyu klonla:git clone <REPO_URL>cd MyPet
+2) Paketleri yükle:
+npm install
+3) Projeyi çalıştır:
+npx expo start
+4) Çalıştırma seçenekleri:
+Android emülatör: Expo ekranında a
+Gerçek cihaz: Expo Go ile QR kodu okut
+Web:
+npx expo start --web
+APK (İndirilebilir)
+APK Linki: https://expo.dev/accounts/busssnrrr/projects/MyPet/builds/f3343713-824f-48d8-a265-8bcbdf2fd625
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+> Not: APK üretimi için EAS Build kullanıyorsanız örnek komut:
+eas build -p android --profile preview
+Tanıtım Videosu
+YouTube Linki: https://youtube.com/shorts/6qYDJwp58og?feature=share
+Kullanılan Teknolojiler
+React Native
+Expo + Expo Router
+AsyncStorage / Web için localStorage uyumu
+(Cihaz hareketi) expo-sensors (Accelerometer)
